@@ -1,5 +1,6 @@
 import requests
 from pathlib import Path
+import os
 
 
 def save_images(url, filename, api_key=""):

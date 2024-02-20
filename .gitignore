@@ -1,0 +1,9 @@
+.cache
+_pycache_
+.pythonlibs
+.upm
+.env
+replit_zip_error_log.txt
+.gitattributes
+*.toml
+*.lock
