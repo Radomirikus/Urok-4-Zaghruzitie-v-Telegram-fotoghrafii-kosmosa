@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 
 def main():
     load_dotenv()
-    nasa_token = os.getenv("NASA_TOKEN")
-    bot = telegram.Bot(token=nasa_token)
+    telegram_token = os.getenv("TELEGRAM_TOKEN")
+    bot = telegram.Bot(token=telegram_token)
 
     bot.send_message(chat_id='@spaceimagesultra', text="https://youtu.be/dQw4w9WgXcQ?si=4ZVhPJZQ3DMztKIh")
 

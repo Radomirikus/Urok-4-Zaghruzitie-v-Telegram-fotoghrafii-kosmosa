@@ -1,6 +1,9 @@
 import requests
 import random
 from tools import save_images
+from dotenv import load_dotenv
+import os
+
 
 
 def get_nasa_planet_image(nasa_api_key):
@@ -21,8 +24,9 @@ def get_nasa_planet_image(nasa_api_key):
 
 
 def main():
-    nasa_api_key = "0rIv85cpecbP541zZfUgJFSrU9dbpVjkOC0xgsTS"
-    get_nasa_planet_image(nasa_api_key)
+    load_dotenv()
+    nasa_token = os.getenv("NASA_TOKEN")
+    get_nasa_planet_image(nasa_token)
 
 
 if __name__ == "__main__":
