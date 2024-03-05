@@ -11,7 +11,8 @@ def main():
     telegram_token = os.getenv("TELEGRAM_TOKEN")
     bot = telegram.Bot(token=telegram_token)
 
-    bot.send_message(chat_id='@spaceimagesultra', text="https://youtu.be/dQw4w9WgXcQ?si=4ZVhPJZQ3DMztKIh")
+    Chanell_name = os.getenv("CHAT_ID")
+    bot.send_message(chat_id=Chanell_name, text="https://youtu.be/dQw4w9WgXcQ?si=4ZVhPJZQ3DMztKIh")
 
     parser = argparse.ArgumentParser(description='отправляет в тг канал снимки nasa и SpaсeX')
     parser.add_argument('cooldown', help='укажите задержку в отправке фотографий', default=14400)
