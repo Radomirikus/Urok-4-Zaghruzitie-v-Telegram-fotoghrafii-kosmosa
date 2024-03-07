@@ -13,7 +13,7 @@ def main():
     chanell_name = os.getenv("CHAT_ID")
 
     parser = argparse.ArgumentParser(description='отправляет в тг канал снимки nasa и SpaсeX')
-    parser.add_argument('cooldown', help='укажите задержку в отправке фотографий', default=14400)
+    parser.add_argument('--cooldown', help='укажите задержку в отправке фотографий', default=14400)
     args = parser.parse_args()
     delay = 2
 
@@ -24,9 +24,9 @@ def main():
             random.shuffle(files)
             for image in files:
                 image_extension = image.split(".")
-                if len(image_extension) == 2: #проверка на то что есть расишрение потому что иногда скачиваются текстовые файлы вместо изображений
+                if len(image_extension) != 1:
                     with open(f'images/{image}', 'rb') as file:
-                        bot.send_document(chat_id=chanell_name, documet=file)
+                        bot.send_document(chat_id=chanell_name, document=file)
 
                     time.sleep(delay)
         time.sleep(args.cooldown)
