@@ -2,7 +2,7 @@ import requests
 from urllib.parse import urlsplit
 import os
 import random
-from tools import save_images
+from tools import save_image
 from dotenv import load_dotenv
 
 
@@ -12,7 +12,9 @@ def get_extension(image_link):
 
 
 def get_nasa_apod_images(nasa_api_key):
-    count = random.randint(30, 50)
+    min_img = 30
+    max_img = 50
+    count = random.randint(min_img, max_img)
     payload = {"api_key": nasa_api_key, "count" : count}
     url = "https://api.nasa.gov/planetary/apod"
     response = requests.get(url, params=payload)
@@ -22,7 +24,7 @@ def get_nasa_apod_images(nasa_api_key):
         image_link = urlsplit(nasa_image_url)
         img_extension = get_extension(image_link)
         filename = f'images/Nasa_apod_{index}{img_extension}'
-        save_images(nasa_image_url, filename)
+        save_image(nasa_image_url, filename)
 
 
 def main():

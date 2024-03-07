@@ -1,5 +1,5 @@
 import requests
-from tools import save_images
+from tools import save_image
 import argparse
 
 
@@ -9,7 +9,7 @@ def fetch_spacex_last_launch(launch_id):
     response.raise_for_status()
     for index, image in enumerate(response.json()['links']['flickr']['original']):
             filename = f"images/spaceX_{index}.jpg"
-            save_images(image, filename)
+            save_image(image, filename)
 
 
 def main():

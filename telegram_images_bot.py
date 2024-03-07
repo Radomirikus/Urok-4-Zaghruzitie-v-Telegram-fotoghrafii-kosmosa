@@ -10,13 +10,12 @@ def main():
     load_dotenv()
     telegram_token = os.getenv("TELEGRAM_TOKEN")
     bot = telegram.Bot(token=telegram_token)
-
-    Chanell_name = os.getenv("CHAT_ID")
-    bot.send_message(chat_id=Chanell_name, text="https://youtu.be/dQw4w9WgXcQ?si=4ZVhPJZQ3DMztKIh")
+    chanell_name = os.getenv("CHAT_ID")
 
     parser = argparse.ArgumentParser(description='отправляет в тг канал снимки nasa и SpaсeX')
     parser.add_argument('cooldown', help='укажите задержку в отправке фотографий', default=14400)
     args = parser.parse_args()
+    delay = 2
 
     while True:
         directory_object = os.walk('images')
@@ -25,11 +24,12 @@ def main():
             random.shuffle(files)
             for image in files:
                 image_extension = image.split(".")
-                if len(image_extension) == 2:
-                    bot.send_document(chat_id='@spaceimagesultra', document=open(f'images/{image}', 'rb'))
-                    time.sleep(2)
-        time.sleep(args.cooldown)
+                if len(image_extension) == 2: #проверка на то что есть расишрение потому что иногда скачиваются текстовые файлы вместо изображений
+                    with open(f'images/{image}', 'rb') as file:
+                        bot.send_document(chat_id=chanell_name, documet=file)
 
+                    time.sleep(delay)
+        time.sleep(args.cooldown)
 
 if __name__ == "__main__":
     main()
