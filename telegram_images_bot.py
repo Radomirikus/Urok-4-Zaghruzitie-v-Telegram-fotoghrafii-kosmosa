@@ -10,7 +10,7 @@ def main():
     load_dotenv()
     telegram_token = os.getenv("TELEGRAM_TOKEN")
     bot = telegram.Bot(token=telegram_token)
-    chanell_name = os.getenv("CHAT_ID")
+    chanell_name = os.getenv("TG_CHAT_ID")
 
     parser = argparse.ArgumentParser(description='отправляет в тг канал снимки nasa и SpaсeX')
     parser.add_argument('--cooldown', help='укажите задержку в отправке фотографий', default=14400)
