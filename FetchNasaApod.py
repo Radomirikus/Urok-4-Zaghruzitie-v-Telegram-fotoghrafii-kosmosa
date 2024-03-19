@@ -12,9 +12,9 @@ def get_extension(image_link):
 
 
 def get_nasa_apod_images(nasa_api_key):
-    min_img = 30
-    max_img = 50
-    count = random.randint(min_img, max_img)
+    min = 30
+    max = 50
+    count = random.randint(min, max)
     payload = {"api_key": nasa_api_key, "count" : count}
     url = "https://api.nasa.gov/planetary/apod"
     response = requests.get(url, params=payload)

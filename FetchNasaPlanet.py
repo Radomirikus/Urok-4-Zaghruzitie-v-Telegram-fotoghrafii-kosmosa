@@ -8,9 +8,9 @@ import os
 
 def get_nasa_planet_images(nasa_api_key):
     url = "https://api.nasa.gov/EPIC/api/natural/images"
-    min_range = 5
-    max_range = 10
-    count = random.randint(min_range, max_range)
+    min = 5
+    max = 10
+    count = random.randint(min, max)
     payload = {"api_key" : nasa_api_key}
     for index in range(count):
         response = requests.get(url, params=payload)
