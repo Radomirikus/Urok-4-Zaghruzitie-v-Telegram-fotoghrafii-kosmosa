@@ -23,11 +23,8 @@ def main():
             folder, nested_folder, files = elements
             random.shuffle(files)
             for image in files:
-                image_extension = image.split(".")
-                if len(image_extension) != 1: #NasaPlanet может загрузить не то что нужно, это проверка на то что есть расширение
-                    with open(f'images/{image}', 'rb') as file:
-                        bot.send_document(chat_id=chanell_name, document=file)
-
+                with open(f'images/{image}', 'rb') as file:
+                    bot.send_document(chat_id=chanell_name, document=file)
                     time.sleep(delay)
         time.sleep(args.cooldown)
 
