@@ -14,9 +14,10 @@ def get_nasa_planet_images(nasa_api_key):
     payload = {"api_key" : nasa_api_key}
     response = requests.get(url, params=payload)
     response.raise_for_status()
+    response_result = response.json()
 
     for index in range(count):
-        epic_response = response.json()[index]
+        epic_response = response_result[index]
         epic_image_name = epic_response["image"]
         epic_image_date = epic_response["date"]
         splited_day = epic_image_date.split()
