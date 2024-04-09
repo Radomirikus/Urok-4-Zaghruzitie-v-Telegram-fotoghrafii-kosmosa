@@ -23,7 +23,6 @@ def get_nasa_apod_images(nasa_api_key):
         nasa_image_url = response['url']
         image_link = urlsplit(nasa_image_url)
         img_extension = get_extension(image_link)
-        print(img_extension)
         filename = f'images/Nasa_apod_{index}{img_extension}'
         if img_extension != "":
             save_image(nasa_image_url, filename)
